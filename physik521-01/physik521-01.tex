@@ -18,6 +18,9 @@
 \usepackage{mathtools}
 
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+
+\usepackage{cancel}
 
 \begin{document}
 
@@ -38,41 +41,188 @@
 
 \subsection{Wahrscheinlichkeitstheorie}
 
-\subsubsection{ }
+\subsubsection{}
+Es soll eine mögliche Zufallsvariable $X$ für das Würfeln mit 2 Würfeln angegeben werden.\\
+Ich nehme: $X=$ Summe der Augen ist 7.
 
-\subsubsection{ }
+\subsubsection{}
+Nun soll angegeben werden, wie groß die Wahrscheinlichkeit ist, dass die in a. definierte Zufallsvarianble $X$ auftritt.\\
+Eine 7 beim Würfeln mit zwei Würfeln erhält man bei den sechs Kombinationen:
+\{$\del{1,6}$, $\del{6,1}$, $\del{2,5}$, $\del{5,2}$, $\del{3,4}$, $\del{4,3}$\} von insgesamt 36 möglichen, so dass folgt:
+\begin{align*}
+	P_X\del{X=7}=\frac6{36}=\frac16
+\end{align*}
 
-\subsubsection{ }
+\subsubsection{}
+Als nächstes soll der Mittelwert aller möglichen Ergebnisse des Würfelns mit zwei Würfeln berechnet werden. Da die Wahrscheinlichkeiten $P_{X_i}, i =\{2,3,...,12\}$ symmetrisch um die 7 verteilt sind ($P_{X_2} = P_{X_{12}}; P_{X_3} = P_{X_{11}}; ...$ ist der Mittelwert offensichtlich 7.
 
-\subsubsection{ }
+\subsubsection{}
+Nun soll gezeigt werden, dass für das Schwankungsquadrat
+\begin{align*}
+	\del{\Delta X^2}\equiv\braket{\del{X - \braket{X}}^2}
+\end{align*}
+folgt:
+\begin{align*}
+	\del{\Delta X^2}=\braket{X^2} - \braket{X}^2
+\end{align*}
+Dazu benötige ich, dass der Erwartungswert des Erwartungswertes der Erwartungswert ist, also $\braket{\braket{X}} = \braket{X}$. Dann folgt:
+\begin{align*}
+	\del{\Delta X^2}	&= \braket{\del{X - \braket{X}}^2}\\
+						&= \braket{X^2 - 2X\braket{X} + \braket{X}^2}\\
+						&= \braket{X^2} - 2\braket{X\braket{X}} + \braket{X}^2\\
+						&= \braket{X^2} - 2\braket{X}\braket{X} + \braket{X}^2\\
+						&= \braket{X^2} - 2\braket{X}^2 + \braket{X}^2\\
+						&= \braket{X^2} - \braket{X}^2
+\end{align*}
 
-\subsubsection{ }
+\subsubsection{}
+Nun wird der Korrelationskoeffizient $K_{ij}$ eingeführt mit:
+\begin{align*}
+	K_{ij} = \braket{\del{X_i - \braket{X_i}}\del{X_j - \braket{X_j}}}
+\end{align*}
+Es werden zwei Zufallsexperimente betrachtet:
+\begin{enumerate}
+	\item
+	Das Würfeln zweier Würfel, wobei die erste Zufallsvariable der erste Würfel und die zweite Zufallsvariable der zweite Würfel ist.\\
+	In diesem Fall ist der Mittelwert beider Zufallsexperimente 3,5. Somit ist dann die Differenz der Werte zum Mittelwert: $X_i - \braket{X_i} = \{-2,5;-1,5;-0,5;0,5;1,5;2,5\}$.\\
+	Betrachtet man also den Mittelwert aller Koeffizienten heben sich die Positiven und negativen Werte gegeneinander weg und es folgt sofort:
+	\begin{align*}
+		K_{ij} = 0
+	\end{align*}
+	\item
+	Als zweites schießt ein Physiker zwei mal auf ein Tor, dabei trifft er beim ersten mal zu 50\%, beim zweiten mal zu 50\% wenn er beim ersten Schuß getroffen, zu 25\%, wenn er beim ersten mal nicht getroffen hat.\\
+	Die Wahrscheinlichkeit beim zweiten mal zu treffen hängt also von dem Ergebnis des ersten Experiments ab. Im folgenden bezeichne ich einen Treffer als positives Ereignis (+), einen Fehlschuss als negativ (-).\\
+	Die Wahrscheinlichkeiten sind:
+	\begin{align*}
+		&\braket{X_2^1\del{+}} = 0,5\\
+		&\braket{X_2^1\del{-}} = 0,5\\
+		&\braket{X_2^2\del{+}} = 0,5\\
+		&\braket{X_2^2\del{-}} = 0,25
+	\end{align*}
+	Damit folgt für den Korelationskoeffizienten:
+	\begin{align*}
+		K_{ij} 	&= \frac14\del{\cancel{\del{1 - 0,5}\del{1 - 0,5}} + \cancel{\del{1 - 0,5}\del{0 - 0,5}} + \del{0 - 0,5}\del{1 - 0,25} + \del{0 - 0,5}\del{0 - 0,5}}\\
+				&= \frac14\del{\del{0 - 0,5}\del{1 - 0,25} + \del{0 - 0,5}\del{0 - 0,5}}\\
+				&= \frac14\del{-0,5\cdot0,75 + -0,5\cdot-0,5}\\
+				&= \frac14\del{-0,375 + 0,125}\\
+				&= \frac14\cdot-0,25\\
+				&= -0,0625
+	\end{align*}
+\end{enumerate}
 
-Der Korrelationskoeffizient ist:
-\begin{equation}
-	K_{ij} := \langle \del{X_i - \langle X_i \rangle} \del{X_j - \langle
-	X_j \rangle} \rangle
-\end{equation}
+\subsubsection{}
+In diesem Aufgabenteil soll ein Dopingtest betrachtet werden, der bei Sportveranstaltungen durchgeführt wird.\\
+Es werden drei Fälle betrachtet:
+\begin{enumerate}
+	\item
+	Wie wahrscheinlich es ist, dass eine Dopingprobe positiv ist:
+	\begin{align*}
+		P_1 = 0,99\cdot0,2 + 0,05\cdot0,8 = 0,238
+	\end{align*}
+	\item
+	Wie wahrscheinlich es ist, dass ein Test positiv ausfällt, obwohl der Sportler gedopt hat:
+	\begin{align*}
+		P_2 = 0,2*0,01 = 0,002
+	\end{align*}
+	\item
+	Wie wahrscheinlich es ist, dass ein Sportler gedopt hat, falls seine Dopingprobe negativ gewesen ist:
+	\begin{align*}
+		P_3 = \del{1 - P_1}P_2 = 0,001524
+	\end{align*}
+\end{enumerate}
 
-\begin{itemize}
-	\item  Zweimal geworfener Würfel
-		\begin{align*}
-			K^1_{12} &= \langle \del{X^1_i - 3.5} \del{X^1_j - 3.5}
-			\rangle \\
-			&= 0
-		\end{align*}
-	\item  Zweimaliger Schuss auf Torwand
-		\begin{align*}
-			K^2_{12} &= \langle \del{0 - 0.5}\del{0 - 0.25} +
-			\del{0 - 0.5}\del{1 - 0.25} + \del{1 -0.5}\del{0-0.5} +
-			\del{1 -0.5}\del{1 -0.5}\rangle\\
-			&= -0.25
-		\end{align*}
-\end{itemize}
+\subsubsection{}
+Zuletzt werden Bernoulli-Prozesse betrachtet. Die Wahrscheinlichkeit ist dann durch die Beinominalverteilung
+\begin{align*}
+	B\del{p,k} = 
+	\begin{pmatrix}
+		N\\
+		k			
+	\end{pmatrix}
+	p^k\del{1-p}^{N-k}
+\end{align*}
+gegeben.\\
+Es sollen Erwartungswert und Schwankungsbreite ausgerechnet werden.\\
+Zuerst der Erwartungswert:
+\begin{align*}
+	\braket{k}	&= \sum_{k=0}^N k
+				\begin{pmatrix}
+					N\\
+					k			
+				\end{pmatrix}
+				p^k\del{1-p}^{N-k}\\
+				&= \sum_{k=0}^N \frac{kN!}{k!\del{N-k}!}p^k\del{1-p}^{N-k}\\
+				&= \sum_{k=1}^N \frac{N!}{\del{k-1}!\del{N-k}!}p^{k}\del{1-p}^{N-k}\\
+	\intertext{%
+		Setze $k' \equiv k - 1 \Leftrightarrow k = k' + 1$
+	}
+				&= \sum_{k'=0}^{N-1} \frac{N!}{k'!\del{N-1-k'}!}p^{k'+1}\del{1-p}^{N-1-k'}\\
+				&= Np\sum_{k'=0}^{N-1} \frac{\del{N-1}!}{k'!\del{N-1-k'}!}p^{k'}\del{1-p}^{N-1-k'}\\
+				&= Np\underbrace{\sum_{k'=0}^{N-1}
+				\begin{pmatrix}
+					N-1\\
+					k'			
+				\end{pmatrix}
+				p^{k'}\del{1-p}^{N-1-k'}}_{=1}\\
+				&= Np
+\end{align*}
+Jetzt den Erwartungswert des Quadrats:
+\begin{align*}
+	\braket{k^2}&= \sum_{k=0}^N k^2
+				\begin{pmatrix}
+					N\\
+					k			
+				\end{pmatrix}
+				p^k\del{1-p}^{N-k}\\
+				&= \sum_{k=0}^N \del{k\del{k-1} + k}
+				\begin{pmatrix}
+					N\\
+					k			
+				\end{pmatrix}
+				p^k\del{1-p}^{N-k}\\
+				&= \sum_{k=0}^N k\del{k-1}
+				\begin{pmatrix}
+					N\\
+					k			
+				\end{pmatrix}
+				p^k\del{1-p}^{N-k} + \underbrace{\sum_{k=0}^N k
+				\begin{pmatrix}
+					N\\
+					k			
+				\end{pmatrix}
+				p^k\del{1-p}^{N-k}}_{=\braket{k}}\\
+				&= \sum_{k=0}^N \frac{k\del{k-1}N!}{k!\del{N-k}!}p^k\del{1-p}^{N-k} + \braket{k}\\
+				&= \sum_{k=2}^N \frac{N!}{\del{k-2}!\del{N-k}!}p^{k}\del{1-p}^{N-k} + \braket{k}\\
+	\intertext{%
+		Setze $k' \equiv k - 2 \Leftrightarrow k = k' + 2$
+	}
+				&= \sum_{k'=0}^{N-2}\frac{N!}{k'!\del{N-2-k'}!}p^{k'+2}\del{1-p}^{N-2-k'} + \braket{k}\\
+				&= N\del{N-1}p^2\sum_{k'=0}^{N-2}\frac{\del{N-2}!}{k'!\del{N-2-k'}!}p^{k'}\del{1-p}^{N-2-k'} + \braket{k}\\
+				&= N\del{N-1}p^2\underbrace{\sum_{k'=0}^{N-2}
+				\begin{pmatrix}
+					N-2\\
+					k'		
+				\end{pmatrix}
+				p^{k'}\del{1-p}^{N-2-k'}}_{=1} + \braket{k}\\
+				&= N\del{N-1}p^2 + \braket{k}\\
+				&= N\del{N-1}p^2 + Np
+\end{align*}
+Es folgt:
+\begin{align*}
+	\braket{k^2} - \braket{k}^2	&= N\del{N-1}p^2 + Np - N^2p^2\\
+								&= N^2p^2 - Np^2 + Np - N^2p^2\\
+								&= Np - Np^2\\
+								&= Np\del{1 - p}
+\end{align*}
 
-\subsubsection{ }
 
-\subsubsection{ }
+
+
+
+
+
+
+
 
 
 
