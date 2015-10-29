@@ -38,6 +38,30 @@
 
 \subsection{Maxwell Relationen und Ableitungsregeln}
 
+\subsubsection{}
+Gegeben ist das exakte Differential:
+\begin{align*}
+	\dif f = u\del{x,y}\dif x + v\del{x,y}\dif y
+\end{align*}
+Es soll gezeigt werden, dass gilt:
+\begin{align*}
+	\del{\pd{u\del{x,y}}{y}}_x = \del{\pd{v\del{x,y}}{x}}_y
+\end{align*}
+Per Definition (vgl. Vorlesung) gilt für ein exaktes Differenzial, dass eine Stammfunktion $F\del{x,y}$ für die gilt:
+\begin{align}
+	&\del{\pd{F\del{x,y}}{x}}_y = u\del{x,y}\\
+	&\del{\pd{F\del{x,y}}{y}}_x = v\del{x,y}
+\end{align}
+Wenn ich (1) zusätzlich nach $y$ und (2) nach $x$ ableite, folgt:
+\begin{align*}
+	&\frac{\partial^2F\del{x,y}}{\partial x\partial y} = \del{\pd{u\del{x,y}}{y}}_x\\
+	&\frac{\partial^2F\del{x,y}}{\partial y\partial x} = \del{\pd{u\del{x,y}}{x}}_y
+\end{align*}
+Der Satz von Schwarz besagt, dass die Reihenfolge von partiellen Ableitungen vertauscht werden kann, also:
+\begin{align*}
+	&\frac{\partial^2F\del{x,y}}{\partial x\partial y} = \frac{\partial^2F\del{x,y}}{\partial y\partial x}\\
+	\Leftrightarrow&\del{\pd{u\del{x,y}}{y}}_x = \del{\pd{v\del{x,y}}{x}}_y
+\end{align*}
 
 \subsection{Wahrscheinlichkeitstheorie}
 
